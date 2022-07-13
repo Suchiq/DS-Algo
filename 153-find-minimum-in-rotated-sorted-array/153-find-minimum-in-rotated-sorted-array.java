@@ -20,6 +20,9 @@ class Solution {
        if(start==end){
            return nums[start];
        }
+       if(nums[start]<nums[end]){
+           return nums[start];
+       }
        int mid = start+(end-start)/2;
         
         if(mid>start && nums[mid] < nums[mid-1]){
@@ -27,10 +30,7 @@ class Solution {
           return nums[mid];
             
         }
-         if(mid<end && nums[mid] > nums[mid+1]){
-            
-           return nums[mid+1];
-         }
+        
         if(mid<end && nums[mid]>nums[end]){
             
            return binarySearch(nums, mid+1,end);
