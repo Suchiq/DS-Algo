@@ -2,8 +2,6 @@ class Solution {
 
     public int lengthOfLongestSubstring(String s) {
         
-      
-
         int i = 0;
         int j = 0;
         int max = 0;
