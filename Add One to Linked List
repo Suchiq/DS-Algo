@@ -1,0 +1,68 @@
+/** This is the ListNode class definition
+
+class ListNode {
+	int data;
+	ListNode next;
+
+	ListNode(int data) {
+		this.data = data;
+		this.next = null;
+	}
+}
+**/
+class Solution {
+	ListNode addOneToList(ListNode head) {
+		// add your logic here
+	  // reverse link list
+	  ListNode current = reverseLinkList(head);
+		
+	  // add one to this 
+	 ListNode current1 = current, prev =null;
+	 	int sum =0;
+		int carry = 0;
+		
+	while(current!=null)
+	{
+		if(prev == null)
+		{
+			// first node add one 
+		   sum = current.data+1;
+		}else{
+			sum = current.data+carry;
+		}
+		if(sum>9)
+		{
+			carry = 1;
+			current.data = 0;
+		}else{
+			carry = 0;
+			current.data = sum;
+		}
+		prev = current;
+		current = current.next;
+	}
+		if(carry>0)
+	{
+		ListNode temp = new ListNode(carry);
+		prev.next = temp;	
+			
+		}
+	   	
+		//System.out.prinln(arr.size()+"");
+	return reverseLinkList(current1);
+}
+	
+	ListNode reverseLinkList(ListNode head)
+	{
+		ListNode prev = null, next = null, current = head;
+		
+		while (current!=null)
+		{
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		return prev;
+	}
+}
