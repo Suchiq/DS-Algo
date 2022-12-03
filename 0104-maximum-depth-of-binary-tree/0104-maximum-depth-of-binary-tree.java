@@ -14,47 +14,50 @@
  * }
  */
 class Solution {
-    int max = 0;    
-    
+    int max = 0;
+
     public void dfs(TreeNode root) {
-        
         Stack<Pair<TreeNode, Integer>> s = new Stack<>();
         s.push(new Pair<>(root, 1));
 
-        while(!s.empty()) {
+        while (!s.empty()) {
             Pair<TreeNode, Integer> node = s.pop();
-            
-            if(node.getValue() > max) {
+
+            if (node.getValue() > max) {
                 max = node.getValue();
             }
-            
+
             TreeNode n = node.getKey();
 
-            if(n.left != null) {
-                s.push(new Pair<>(n.left, node.getValue()+1));
+            if (n.left != null) {
+                s.push(new Pair<>(n.left, node.getValue() + 1));
             }
-            if(n.right != null) {
-                s.push(new Pair<>(n.right, node.getValue()+1));
+            if (n.right != null) {
+                s.push(new Pair<>(n.right, node.getValue() + 1));
             }
-            
         }
-        
     }
 
     public int maxDepth(TreeNode root) {
+        // dfs(root);
+        //return max;
+        int max = 1;
+        return findHeight(root, 0);
+    }
+
+    int findHeight(TreeNode root, int count) {
+        
+           
         if (root == null) {
             return 0;
         }
+         
+        // dfs(root);
+        //return max;
+      
+      int left =  findHeight(root.left, count + 1);
+      int right = findHeight(root.right, count + 1);
 
-        dfs(root);
-        return max;
-//         if (max < count) {
-//             max = count;
-//         }
-
-//         maxDepth(root.left, count+1);
-//         maxDepth(root.right, count+1);
-
-//         return max;
+        return Math.max(left,right)+1;
     }
 }
