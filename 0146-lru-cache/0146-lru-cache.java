@@ -16,7 +16,7 @@ class LRUCache {
         // remove and add that to front
 
         if (map.containsKey(key)) {
-            //  System.out.println("get"+map.get(key));
+           
             Node node = map.get(key);
             remove(node);
             addNode(node);
@@ -53,7 +53,7 @@ class LRUCache {
     public void remove(Node node) {
         //remove from hasmap
         //remove from dubly link list
-            System.out.println(node);
+          
         map.remove(node.key);
         Node node_next = node.next;
         Node node_prev = node.prev;
