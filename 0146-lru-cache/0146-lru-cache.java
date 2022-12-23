@@ -1,35 +1,83 @@
 class LRUCache {
-    HashMap<Integer, Integer> cache;
-    int capacity;
+    Node head = new Node();
+    Node tail = new Node();
+    Map<Integer, Node> map;
+    int cache_capacity;
 
     public LRUCache(int capacity) {
-        this.cache = new LinkedHashMap<Integer, Integer>(capacity);
-        this.capacity = capacity;
+        map = new HashMap(capacity);
+        this.cache_capacity = capacity;
+        head.next = tail;
+        tail.prev = head;
     }
 
     public Integer get(int key) {
-        if (cache.containsKey(key)) {
-            int value = cache.get(key);
-            cache.remove(key);
-            cache.put(key, value);
-            return value;
+        //check in hashmao if exist not then return -1
+        // remove and add that to front
+
+        if (map.containsKey(key)) {
+            //  System.out.println("get"+map.get(key));
+            Node node = map.get(key);
+            remove(node);
+            addNode(node);
+            return map.get(key).val;
         }
+
         return -1;
     }
 
     public void put(int key, int value) {
-     
-          if (cache.containsKey(key)) {
-              cache.remove(key);
-              cache.put(key, value);
-              return;
+        // check in hasmap if exist remove and add to front
+        // if not exist in hasmap check for capacity if full then remove and add
+        // if capacity not full then add
+
+        if (map.containsKey(key)) {
+            Node node = map.get(key);
+            node.val = value;
+            remove(node);
+            addNode(node);
+            return;
         }
-        if (cache.size() >= capacity) {
-            int first = cache.keySet().iterator().next();
-            cache.remove(first);
+        if (map.size() == cache_capacity) {
+          
+            remove(tail.prev);
         }
-         cache.put(key, value);
+
+        Node node = new Node();
+        node.key = key;
+        node.val = value;
+        addNode(node);
+        map.put(key, node);
     }
+
+    public void remove(Node node) {
+        //remove from hasmap
+        //remove from dubly link list
+            System.out.println(node);
+        map.remove(node.key);
+        Node node_next = node.next;
+        Node node_prev = node.prev;
+
+        node_prev.next = node.next;
+        node_next.prev = node_prev;
+    }
+
+    public void addNode(Node node) {
+        map.put(node.key, node);
+    
+        Node head_next = head.next;
+        node.next = head_next;
+        head_next.prev = node;
+        head.next = node;
+        node.prev = head;
+    }
+}
+
+class Node {
+    int key;
+    int val;
+    Node next;
+    Node prev;
 }
 /**
  * Your LRUCache object will be instantiated and called as such:
