@@ -44,9 +44,7 @@ class Solution {
 
                 --size;
             }
-          //  for (int i = 0; i < currentArray.size(); i++) {
-            //    System.out.println(currentArray.get(i));
-            //}
+         
             if (isLeftToRight) {
                 isLeftToRight = false;
                 ans.add(currentArray);
