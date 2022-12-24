@@ -27,16 +27,14 @@ class Solution {
         if (root == null) {
             return;
         }
-      //  System.out.println("root"+root.val);
-       // System.out.println(level);
+
         if (root.left == null && root.right == null && depth == level && !isfound) {
             isfound = true;
-             // System.out.println("same"+root.val);
             ans = root.val;
         }
 
-        inOrderTraver(root.left, depth, level+1);
-        inOrderTraver(root.right, depth, level+1);
+        inOrderTraver(root.left, depth, level + 1);
+        inOrderTraver(root.right, depth, level + 1);
     }
 
     public int findHeight(TreeNode root) {
