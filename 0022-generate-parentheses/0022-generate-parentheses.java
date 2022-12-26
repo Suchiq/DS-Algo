@@ -9,15 +9,11 @@ class Solution {
     }
 
     void addParenthesis(int open, int close, String s, int n) {
-    
         if (open == n && close == n) {
-             System.out.println(s);
             ans.add(s);
             return;
         }
-        System.out.println("open"+open);
-         System.out.println("close"+close);
-      
+
         if (open < n) {
             addParenthesis(open + 1, close, s + "(", n);
         }
