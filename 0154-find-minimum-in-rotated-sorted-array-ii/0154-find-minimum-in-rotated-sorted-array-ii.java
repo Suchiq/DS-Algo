@@ -11,36 +11,23 @@ class Solution {
         if (nums.length == 1) {
             return nums[0];
         }
-
-        if (start <= end) {
-            if (nums[start] < nums[end]) {
-                return nums[start];
-            }
-
-            if (start == end) {
-                return nums[start];
-            }
-
-            int mid = start + (end - start) / 2;
-
-            if (mid > 0 && nums[mid] < nums[mid - 1]) {
-                System.out.println("true");
-                return nums[mid];
-            }
-
-            if (nums[mid] == nums[start]) {
-                return binarySearch(start + 1, end, nums);
-            }
-            if (nums[mid] == nums[end]) {
-                return binarySearch(start, end - 1, nums);
-            }
-
-            if (nums[mid] > nums[start]) {
-                return binarySearch(mid + 1, end, nums);
-            } else {
-                return binarySearch(0, mid, nums);
-            }
+        if (start == end || nums[start] < nums[end]) {
+            return nums[start];
         }
-        return -1;
+
+        int mid = start + (end - start) / 2;
+
+        if (mid > 0 && nums[mid] < nums[mid - 1]) {
+            return nums[mid];
+        }
+        if (nums[mid] == nums[start]) {
+            return binarySearch(start + 1, end, nums);
+        }
+
+        if (nums[mid] > nums[start]) {
+            return binarySearch(mid + 1, end, nums);
+        } else {
+            return binarySearch(0, mid, nums);
+        }
     }
 }
