@@ -28,10 +28,6 @@ class Solution {
         // last - reverse list
         //current then compare
 
-        //System.out.println(curr.val);
-       // System.out.println(last);
-      //  System.out.println(mid.next.val);
-
         while (last != null) {
             if (curr.val != last.val) {
                 return false;
@@ -46,14 +42,13 @@ class Solution {
         ListNode prev = null;
         ListNode cur = node;
         ListNode next = null;
-       
+
         while (cur != null) {
             next = cur.next;
             cur.next = prev;
             prev = cur;
             cur = next;
         }
-        // System.out.println(cur.val);
 
         return prev;
     }
