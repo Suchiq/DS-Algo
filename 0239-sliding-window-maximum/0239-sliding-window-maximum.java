@@ -1,13 +1,13 @@
 class Solution {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-        // solution using de queue
+        // solution using deque
 
         // make deque of size k
-        //fill with the numbers and add elements which acending order
+        //fill with the numbers and add elements in acending order
         // remove if last element is less than next element
         //greater elem will always in front
-        // print greater elem for last window
+        // print max elem for last window
         //iterate till n for next windows
         //remove elements which are out of window
         //add element while checking greater element
@@ -15,7 +15,7 @@ class Solution {
 
         ArrayList<Integer> ans = new ArrayList();
 
-        Deque<Integer> arrDequeue = new ArrayDeque<Integer>();
+        Deque<Integer> q = new ArrayDeque<Integer>();
 
         // iterate array till k to and add to deque
         // deque where we can add and remove element from the front and rear
@@ -23,34 +23,32 @@ class Solution {
         for (i = 0; i < k; i++) {
             //check if next element is greater than the element which are in queue remove that
 
-            while (!arrDequeue.isEmpty() && nums[i] >= nums[arrDequeue.peekLast()]) {
-                arrDequeue.removeLast();
+            while (!q.isEmpty() && nums[i] >= nums[q.peekLast()]) {
+                q.removeLast();
             }
 
-            arrDequeue.addLast(i);
+            q.addLast(i);
         }
-
-        //System.out.println(i);
 
         for (; i < nums.length; i++) {
             // this is the max element in the prev window
-            ans.add(nums[arrDequeue.peek()]);
-
+            ans.add(nums[q.peek()]);
+            
             // remove useless element of prev window
 
-            while (!arrDequeue.isEmpty() && arrDequeue.peek() <= i - k) {
-                arrDequeue.removeFirst();
+            while (!q.isEmpty() && q.peek() <= i - k) {
+                q.removeFirst();
             }
             //check if next element is greater than the element which are in queue remove that
 
-            while (!arrDequeue.isEmpty() && nums[i] >= nums[arrDequeue.peekLast()]) {
-                arrDequeue.removeLast();
+            while (!q.isEmpty() && nums[i] >= nums[q.peekLast()]) {
+                q.removeLast();
             }
 
-            arrDequeue.addLast(i);
+            q.addLast(i);
         }
         // this is the max element in the current window
-        ans.add(nums[arrDequeue.peek()]);
+        ans.add(nums[q.peek()]);
         int[] optArray = new int[ans.size()];
 
         for (int j = 0; j < ans.size(); j++) {
