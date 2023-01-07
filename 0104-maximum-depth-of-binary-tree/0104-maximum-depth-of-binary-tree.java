@@ -41,11 +41,11 @@ class Solution {
     public int maxDepth(TreeNode root) {
         // dfs(root);
         //return max;
-        int max = 1;
-        return findHeight(root, 0);
+        //int max = 1;
+        return findHeight(root);
     }
 
-    int findHeight(TreeNode root, int count) {
+    int findHeight(TreeNode root) {
         
            
         if (root == null) {
@@ -55,8 +55,8 @@ class Solution {
         // dfs(root);
         //return max;
       
-      int left =  findHeight(root.left, count + 1);
-      int right = findHeight(root.right, count + 1);
+      int left =  findHeight(root.left);
+      int right = findHeight(root.right);
 
         return Math.max(left,right)+1;
     }
