@@ -10,8 +10,8 @@ class Solution {
                 int temp = nums[m_pointer];
                 nums[m_pointer] = nums[l_pointer];
                 nums[l_pointer] = temp;
-                l_pointer++;
                 m_pointer++;
+                l_pointer++;
             } else if (nums[m_pointer] == 1) {
                 m_pointer++;
             } else if (nums[m_pointer] == 2) {
