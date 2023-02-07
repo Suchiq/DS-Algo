@@ -1,8 +1,7 @@
 class Solution {
     ArrayList<ArrayList<Integer>> adjArr = new ArrayList();
-    ArrayList<Boolean> visited = new ArrayList();
-    ArrayList<Boolean> explored = new ArrayList();
-    boolean isCourseAllowed = false;
+    boolean[] visited;
+    boolean[] explored;
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         //create adjecency list
@@ -14,10 +13,13 @@ class Solution {
 
         //fill array
 
+        visited = new boolean[numCourses];
+        explored = new boolean[numCourses];
+
         for (int i = 0; i < numCourses; i++) {
             adjArr.add(new ArrayList<Integer>());
-            visited.add(false);
-            explored.add(false);
+            visited[i] = false;
+            explored[i] = false;
         }
 
         //create adjecency list
@@ -31,7 +33,7 @@ class Solution {
         //call dfs
 
         for (int i = 0; i < adjArr.size(); i++) {
-            if (!visited.get(i)) {
+            if (!visited[i]) {
                 if (iscycleDetected_dfs(i)) {
                     return false;
                 }
@@ -42,7 +44,7 @@ class Solution {
     }
 
     public boolean iscycleDetected_dfs(int node) {
-        visited.set(node, true);
+        visited[node] = true;
 
         ArrayList<Integer> curr = adjArr.get(node);
 
@@ -50,15 +52,16 @@ class Solution {
             //System.out.println(visited.get(curr.get(i)));
             //System.out.println(explored.get(curr.get(i)));
 
-            if (!visited.get(curr.get(i))) {
+            if (!visited[curr.get(i)]) {
                 if (iscycleDetected_dfs(curr.get(i))) {
                     return true;
                 }
-            } else if (!explored.get(curr.get(i))) {
+            } else if (!explored[curr.get(i)]) {
                 return true;
             }
         }
-        explored.set(node, true);
+
+        explored[node] = true;
 
         return false;
     }
