@@ -1,6 +1,8 @@
 class Solution {
 
     public String reverseWords(String s) {
+        
+        /*
         // to remove left and right space
         s = s.trim();
 
@@ -25,7 +27,38 @@ class Solution {
             } else {
                 res = sub + " " + res;
             }
+        } */
+        
+         String input = s;
+        
+        int i = input.length() - 1;
+       
+        String res ="";
+        String word="";
+        
+        while(i>=0){
+       
+            if(input.charAt(i) == ' '){
+              
+                if(!res.isEmpty()){
+                    
+                   word = word+res+" ";
+                    res ="";
+                }
+               
+            }else{
+                
+                res = input.charAt(i) + res;
+                
+            }
+             i--;
         }
-        return res;
+         if(!res.isEmpty()){
+                    
+                   word = word+res;
+                  
+                }
+       // System.out.println(word);
+        return word.trim();
     }
 }
