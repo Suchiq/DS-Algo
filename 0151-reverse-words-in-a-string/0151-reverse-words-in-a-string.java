@@ -2,7 +2,7 @@ class Solution {
 
     public String reverseWords(String s) {
         
-        /*
+        
         // to remove left and right space
         s = s.trim();
 
@@ -27,9 +27,9 @@ class Solution {
             } else {
                 res = sub + " " + res;
             }
-        } */
+        } 
         
-         String input = s;
+        /*  String input = s;
         
         int i = input.length() - 1;
        
@@ -59,6 +59,7 @@ class Solution {
                   
                 }
        // System.out.println(word);
-        return word.trim();
+        return word.trim();*/
+        return res;
     }
 }
