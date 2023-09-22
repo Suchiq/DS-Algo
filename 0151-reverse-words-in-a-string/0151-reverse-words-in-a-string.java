@@ -10,7 +10,7 @@ class Solution {
         int start = 0;
         int end = 0;
 
-        while (start < s.length() && end < s.length()) {
+        while (start < s.length() ) {
             while (s.charAt(start) == ' ') {
                 start++;
             }
