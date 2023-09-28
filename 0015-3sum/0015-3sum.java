@@ -19,7 +19,8 @@ class Solution {
         return new ArrayList<>(result);
     }
 
-    public Set<List<Integer>> twoSum(int target, int left, int right, int[] nums, Set<List<Integer>> result,int firstNum) {
+    public Set<List<Integer>> twoSum(int target, int left, int right, int[] nums,
+                                     Set<List<Integer>> result,int firstNum) {
 
         while(left < right){
 
