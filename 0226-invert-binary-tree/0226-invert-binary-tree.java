@@ -24,9 +24,9 @@ class Solution {
         TreeNode right = invertTree(root.right);
 
         TreeNode temp = left;
+
         root.left = right;
         root.right = temp;
-
         return root;
     }
 }
