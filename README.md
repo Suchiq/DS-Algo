@@ -15,4 +15,16 @@ If you like this collection please give star
 |  |
 | ------- |
 | [1603-running-sum-of-1d-array](https://github.com/Suchiq/DS-Algo/tree/master/1603-running-sum-of-1d-array) |
+## Hash Table
+|  |
+| ------- |
+| [0242-valid-anagram](https://github.com/Suchiq/DS-Algo/tree/master/0242-valid-anagram) |
+## String
+|  |
+| ------- |
+| [0242-valid-anagram](https://github.com/Suchiq/DS-Algo/tree/master/0242-valid-anagram) |
+## Sorting
+|  |
+| ------- |
+| [0242-valid-anagram](https://github.com/Suchiq/DS-Algo/tree/master/0242-valid-anagram) |
 <!---LeetCode Topics End-->
